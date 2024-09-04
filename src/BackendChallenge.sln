@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightChangeDetector.Cli", "FlightChangeDetector.Cli\FlightChangeDetector.Cli.csproj", "{CD59A03D-37BD-4936-84FC-E1F9053D5B58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightChangeDetector.Domain", "FlightChangeDetector.Domain\FlightChangeDetector.Domain.csproj", "{F5017193-4F8D-4060-85A8-4761EDBAEB54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightChangeDetector.Infrastructure", "FlightChangeDetector.Infrastructure\FlightChangeDetector.Infrastructure.csproj", "{845FFA0F-0A6A-4FB9-B46C-52BC6ABB4C50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightChangeDetector.Application", "FlightChangeDetector.Application\FlightChangeDetector.Application.csproj", "{E8A65731-A76A-4D63-8AB1-00876DA011FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD59A03D-37BD-4936-84FC-E1F9053D5B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD59A03D-37BD-4936-84FC-E1F9053D5B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD59A03D-37BD-4936-84FC-E1F9053D5B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD59A03D-37BD-4936-84FC-E1F9053D5B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5017193-4F8D-4060-85A8-4761EDBAEB54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5017193-4F8D-4060-85A8-4761EDBAEB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5017193-4F8D-4060-85A8-4761EDBAEB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5017193-4F8D-4060-85A8-4761EDBAEB54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{845FFA0F-0A6A-4FB9-B46C-52BC6ABB4C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{845FFA0F-0A6A-4FB9-B46C-52BC6ABB4C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{845FFA0F-0A6A-4FB9-B46C-52BC6ABB4C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{845FFA0F-0A6A-4FB9-B46C-52BC6ABB4C50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8A65731-A76A-4D63-8AB1-00876DA011FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8A65731-A76A-4D63-8AB1-00876DA011FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8A65731-A76A-4D63-8AB1-00876DA011FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8A65731-A76A-4D63-8AB1-00876DA011FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
