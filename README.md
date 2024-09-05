@@ -22,7 +22,7 @@ I am using **SQLite** as the database, The database consists of three main table
     - `origin_city_id` (int: Primary Key)
     - `destination_city_id` (int: Primary Key)
 
-These are the C# datatypes. The SQLite datatypes are limited, but I used `INTEGER` for `DateTime` and `DateOnly` datatypes.
+These are the C# datatypes. The SQLite datatypes are limited, so I used `INTEGER` for `DateTime` and `DateOnly` datatypes.
 
 #### Relationships:
   - The **`flight`** table references the **`route`** table using the `route_id` foreign key, establishing a many-to-one relationship between flights and routes.
@@ -59,21 +59,20 @@ These are the C# datatypes. The SQLite datatypes are limited, but I used `INTEGE
 The application follows a clean, layered architecture with the following components:
 
 1. **Flight.Domain**:
-  - Contains core business logic and entities (`Flight`, `Route`, `Subscription`).
-  - Decoupled from other layers, ensuring business logic is isolated.
+   - Contains core business logic and entities (`Flight`, `Route`, `Subscription`).
+   - Decoupled from other layers, ensuring business logic is isolated.
 
 2. **Flight.Application**:
-  - Contains application services (e.g., the change detection algorithm).
-  - Orchestrates use cases, applying business rules, while depending on the domain and infrastructure layers.
+   - Contains application services (e.g., the change detection algorithm).
+   - Orchestrates use cases, applying business rules, while depending on the domain and infrastructure layers.
 
 3. **Flight.Infrastructure**:
-
-  - Implements data access via SQLite and Entity Framework.
-  - Handles database operations, keeping domain and application layers decoupled from database concerns.
+   - Implements data access via SQLite and Entity Framework.
+   - Handles database operations, keeping domain and application layers decoupled from database concerns.
 
 4. **Flight.Cli**:
-  - Command-line interface for user interaction.
-  - Accepts input, invokes application services, and outputs results to CSV.
+   - Command-line interface for user interaction.
+   - Accepts input, invokes application services, and outputs results to CSV.
 
 #### Data Flow:
 - **Flight.Cli** takes user input, passes it to **Flight.Application**.
@@ -113,10 +112,10 @@ This approach ensures timely detection of changes in flight schedules, allowing 
 The change detection algorithm leverages several key data structures to manage and process flight data efficiently:
 
 - **`Dictionary<string, List<Flight>>`**:
-  - Flights are grouped by a composite key (airline ID, origin city ID, destination city ID) and stored in a dictionary. This allows for fast lookups when comparing flights from the same airline and route (by reducing the number of datetime comparisons), optimizing the change detection process.
+  Flights are grouped by a composite key (airline ID, origin city ID, destination city ID) and stored in a dictionary. This allows for fast lookups when comparing flights from the same airline and route (by reducing the number of datetime comparisons), optimizing the change detection process.
 
 - **`ConcurrentBag<DetectFlightChangesResult>`**:
-  - A thread-safe collection used to store detected flight changes (new or discontinued) during parallel processing. This ensures that multiple threads can safely add results concurrently without locking.
+  A thread-safe collection used to store detected flight changes (new or discontinued) during parallel processing. This ensures that multiple threads can safely add results concurrently without locking.
 
 These data structures were chosen for their performance and thread-safety to ensure efficient and concurrent processing of large datasets.
 
@@ -126,24 +125,24 @@ These data structures were chosen for their performance and thread-safety to ens
 Several optimizations were applied to ensure the efficient processing of flight data:
 
 - **Efficient Flight Data Retrieval**:
-  - The database indexed are designed based on the query of retrieving flights based on an agency interesting routes, so the query is executed in a reasonable time.
+   The database indexed are designed based on the query of retrieving flights based on an agency interesting routes, so the query is executed in a reasonable time.
 
 - **Dictionary Lookup**:
-  - Flights are grouped by a composite key (`airline_id`, `origin_city_id`, `destination_city_id`) and stored in a dictionary. This allows for fast lookups when comparing flights, minimizing the need for repeated iterations over large collections.
+   Flights are grouped by a composite key (`airline_id`, `origin_city_id`, `destination_city_id`) and stored in a dictionary. This allows for fast lookups when comparing flights, minimizing the need for repeated iterations over large collections.
 
 - **Parallel Processing**:
-  - The use of `Parallel.ForEach` with a defined `MaxDegreeOfParallelism` allows concurrent processing of flight data. This reduces the overall execution time, especially when handling large datasets.
+   The use of `Parallel.ForEach` with a defined `MaxDegreeOfParallelism` allows concurrent processing of flight data. This reduces the overall execution time, especially when handling large datasets.
 
 - **Thread-Safe Data Storage**:
-  - The use of `ConcurrentBag` for storing detected flight changes ensures thread-safe access during parallel execution without the overhead of locks, enhancing performance in a multi-threaded environment.
+   The use of `ConcurrentBag` for storing detected flight changes ensures thread-safe access during parallel execution without the overhead of locks, enhancing performance in a multi-threaded environment.
 
 These optimizations collectively improve the performance and scalability of the flight change detection algorithm.
 
 ### Others
-  - Use `EFCore.BulkExtensions` to speed up to importing data from the CSV files.
-  - Use the Decorator pattern to store the result of the change detection algorithm into a file.
-  - Use a configuration file (`appsettings.json`) to store the settings.
-  - Config and use the dotnet diagnostic logging feature.
-  - Separate the algorithm measurement from the main service by proxy pattern
-  - Reading the data from CSV files and importing them into the database as a pipeline instead of reading all items at the first and then importing to the database (to optimize memory usage)
+  - Using `EFCore.BulkExtensions` to speed up importing data from the CSV files.
+  - Saving the change detection algorithm into a file via Decorator pattern instead of modifying the main service.
+  - Displaying the algorithm execution metrics into a proxy class.
+  - Using `appsettings.json` to store the settings.
+  - Using dotnet diagnostic logging feature.
+  - Reading the initial data from CSV files and importing them into the database as a pipeline instead of reading all items at the first and then importing to the database (to optimize memory usage).
   - Converting the result to CSV format and writing them into the CSV file like the importing style (previous item). 
