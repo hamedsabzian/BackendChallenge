@@ -145,3 +145,5 @@ These optimizations collectively improve the performance and scalability of the 
   - Use a configuration file (`appsettings.json`) to store the settings.
   - Config and use the dotnet diagnostic logging feature.
   - Separate the algorithm measurement from the main service by proxy pattern
+  - Reading the data from CSV files and importing them into the database as a pipeline instead of reading all items at the first and then importing to the database (to optimize memory usage)
+  - Converting the result to CSV format and writing them into the CSV file like the importing style (previous item). 
