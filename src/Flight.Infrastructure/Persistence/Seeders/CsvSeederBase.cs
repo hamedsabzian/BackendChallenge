@@ -1,4 +1,5 @@
 ﻿using EFCore.BulkExtensions;
+using Microsoft.Extensions.Logging;
 
 namespace Flight.Infrastructure.Persistence.Seeders;
 
@@ -6,8 +7,15 @@ public abstract class CsvSeederBase<T> where T : class
 {
     const int PersistenceThreshold = 100000;
 
-    public async Task Seed(string file, FlightDbContext dbContext)
+    public async Task Seed(string file, FlightDbContext dbContext, ILogger logger)
     {
+        logger.LogInformation("The \"{File}\" is importing...", file);
+        if (!File.Exists(file))
+        {
+            logger.LogInformation("The \"{File}\" not found", file);
+            return;
+        }
+
         using var reader = new StreamReader(file);
         int counter = 0;
         var bucket = new List<T>();
@@ -32,6 +40,8 @@ public abstract class CsvSeederBase<T> where T : class
 
         await dbContext.BulkInsertAsync(bucket);
         bucket.Clear();
+
+        logger.LogInformation("The \"{File}\" is imported successfully", file);
     }
 
     protected abstract T Map(string[] lineParts);

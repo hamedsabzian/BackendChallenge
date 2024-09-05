@@ -21,7 +21,7 @@ public class FlightService(IFlightRepository flightRepository, IOptions<FlightOp
         var endDateIncludeNextPlan = query.EndDate.AddDays(_options.PeriodDays).AddMinutes(_options.PeriodToleranceMinutes);
 
         logger.LogInformation(
-            "The interested flights of {Agency} between {StartDate:s} and {EndDate:s} (plush history and future plan) should be loaded",
+            "The interested flights of {Agency} between {StartDate:s} and {EndDate:s} (with history and next plan) should be loaded",
             query.AgencyId,
             query.StartDate, query.EndDate);
 
