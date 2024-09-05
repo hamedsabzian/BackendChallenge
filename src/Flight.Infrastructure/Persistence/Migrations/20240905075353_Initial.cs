@@ -18,7 +18,7 @@ namespace Flight.Infrastructure.Persistence.Migrations
                     route_id = table.Column<int>(type: "INTEGER", nullable: false),
                     origin_city_id = table.Column<int>(type: "INTEGER", nullable: false),
                     destination_city_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    departure_date = table.Column<DateOnly>(type: "TEXT", nullable: false)
+                    departure_date = table.Column<DateOnly>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,8 +45,8 @@ namespace Flight.Infrastructure.Persistence.Migrations
                     flight_id = table.Column<int>(type: "INTEGER", nullable: false),
                     route_id = table.Column<int>(type: "INTEGER", nullable: false),
                     airline_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    departure_time = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    arrival_time = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    departure_time = table.Column<DateTime>(type: "INTEGER", nullable: false),
+                    arrival_time = table.Column<DateTime>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

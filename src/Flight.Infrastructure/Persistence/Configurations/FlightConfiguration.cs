@@ -18,10 +18,12 @@ public class FlightConfiguration : IEntityTypeConfiguration<Domain.Entities.Flig
             .HasColumnName("route_id");
 
         builder.Property(a => a.DepartureTime)
-            .HasColumnName("departure_time");
+            .HasColumnName("departure_time")
+            .HasColumnType("INTEGER");
 
         builder.Property(a => a.ArrivalTime)
-            .HasColumnName("arrival_time");
+            .HasColumnName("arrival_time")
+            .HasColumnType("INTEGER");
 
         builder.Property(a => a.AirlineId)
             .HasColumnName("airline_id");

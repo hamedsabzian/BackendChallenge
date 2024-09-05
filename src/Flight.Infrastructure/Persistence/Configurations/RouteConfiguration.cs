@@ -22,7 +22,8 @@ public class RouteConfiguration : IEntityTypeConfiguration<Route>
             .HasColumnName("destination_city_id");
 
         builder.Property(a => a.DepartureDate)
-            .HasColumnName("departure_date");
+            .HasColumnName("departure_date")
+            .HasColumnType("INTEGER");
 
         builder.HasIndex(a => new { a.OriginCityId, a.DestinationCityId });
     }

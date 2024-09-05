@@ -62,12 +62,15 @@ async ValueTask InitialDatabase()
     if (!dbContext.Subscriptions.Any())
     {
         var rootPath = configuration["InitialDataPath"]!;
+        logger.LogInformation("The subscriptions are importing...");
         await new SubscriptionCsvSeeder().Seed(Path.Combine(rootPath, "subscriptions.csv"), dbContext);
         logger.LogInformation("The subscriptions are imported successfully");
 
+        logger.LogInformation("The routes are importing...");
         await new RouteCsvSeeder().Seed(Path.Combine(rootPath, "routes.csv"), dbContext);
         logger.LogInformation("The routes are imported successfully");
 
+        logger.LogInformation("The flights are importing...");
         await new FlightCsvSeeder().Seed(Path.Combine(rootPath, "flights.csv"), dbContext);
         logger.LogInformation("The flights are imported successfully");
     }

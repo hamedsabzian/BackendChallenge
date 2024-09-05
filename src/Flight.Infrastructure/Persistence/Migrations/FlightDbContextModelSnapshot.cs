@@ -28,11 +28,11 @@ namespace Flight.Infrastructure.Persistence.Migrations
                         .HasColumnName("airline_id");
 
                     b.Property<DateTime>("ArrivalTime")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("arrival_time");
 
                     b.Property<DateTime>("DepartureTime")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("departure_time");
 
                     b.Property<int>("RouteId")
@@ -53,7 +53,7 @@ namespace Flight.Infrastructure.Persistence.Migrations
                         .HasColumnName("route_id");
 
                     b.Property<DateOnly>("DepartureDate")
-                        .HasColumnType("TEXT")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("departure_date");
 
                     b.Property<int>("DestinationCityId")
