@@ -36,7 +36,7 @@ These are the C# datatypes. The SQLite datatypes are limited, so I used `INTEGER
 
 ```
 +---------------------+      +------------------+
-|    route            |      |   flight         |
+|    routes           |      |   flights        |
 +---------------------+      +------------------+
 | id                  | <--- | route_id         |
 | origin_city_id      |      | departure_time   |
@@ -46,7 +46,7 @@ These are the C# datatypes. The SQLite datatypes are limited, so I used `INTEGER
                              +------------------+
 
         +---------------------+
-        |   subscription      |
+        |   subscriptions     |
         +---------------------+
         | agency_id           |
         | origin_city_id      |
