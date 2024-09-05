@@ -1,12 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightChangeDetector.Cli", "FlightChangeDetector.Cli\FlightChangeDetector.Cli.csproj", "{CD59A03D-37BD-4936-84FC-E1F9053D5B58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flight.Cli", "Flight.Cli\Flight.Cli.csproj", "{CD59A03D-37BD-4936-84FC-E1F9053D5B58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightChangeDetector.Domain", "FlightChangeDetector.Domain\FlightChangeDetector.Domain.csproj", "{F5017193-4F8D-4060-85A8-4761EDBAEB54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flight.Domain", "Flight.Domain\Flight.Domain.csproj", "{F5017193-4F8D-4060-85A8-4761EDBAEB54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightChangeDetector.Infrastructure", "FlightChangeDetector.Infrastructure\FlightChangeDetector.Infrastructure.csproj", "{845FFA0F-0A6A-4FB9-B46C-52BC6ABB4C50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flight.Infrastructure", "Flight.Infrastructure\Flight.Infrastructure.csproj", "{845FFA0F-0A6A-4FB9-B46C-52BC6ABB4C50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightChangeDetector.Application", "FlightChangeDetector.Application\FlightChangeDetector.Application.csproj", "{E8A65731-A76A-4D63-8AB1-00876DA011FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flight.Application", "Flight.Application\Flight.Application.csproj", "{E8A65731-A76A-4D63-8AB1-00876DA011FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CDC8A349-A12C-4D62-9479-B85F4A768385}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
