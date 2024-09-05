@@ -12,7 +12,8 @@ using Microsoft.Extensions.Logging;
 if (args.Length != 3 ||
     !DateTime.TryParse(args[0], out var startTime) ||
     !DateTime.TryParse(args[1], out var endTime) ||
-    !int.TryParse(args[2], out var agencyId))
+    !int.TryParse(args[2], out var agencyId) ||
+    startTime > endTime)
 {
     Console.WriteLine("The correct parameters (Start Date, End Date, Agency ID) is not provided.");
     return 1;
@@ -25,10 +26,7 @@ var services = new ServiceCollection()
     .AddLogging(loggingOptions =>
     {
         loggingOptions.AddConfiguration(configuration.GetSection("Logging"))
-            .AddSimpleConsole(options =>
-            {
-                options.TimestampFormat = "[HH:mm:ss] ";
-            });
+            .AddSimpleConsole(options => { options.TimestampFormat = "[HH:mm:ss] "; });
     })
     .AddApplicationDependencies()
     .AddInfrastructureDependencies(configuration);
@@ -39,6 +37,7 @@ var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
 
 await InitialDatabase();
 
+// Using a seperated scope than data seeding 
 using var dependencyScope = serviceProvider.CreateScope();
 var flightService = dependencyScope.ServiceProvider.GetRequiredService<IFlightService>();
 await flightService.DetectChangesForAgency(new DetectFlightChangesQuery(agencyId, startTime, endTime));
